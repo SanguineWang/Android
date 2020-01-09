@@ -7,9 +7,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.helloworld.R;
-import com.example.helloworld.Utils.entity.Relative;
-import com.example.helloworld.learn.Cou2;
-import com.example.helloworld.learn.Main2Activity;
+import com.example.helloworld.setrelative.entity.Relative;
 
 import java.util.List;
 

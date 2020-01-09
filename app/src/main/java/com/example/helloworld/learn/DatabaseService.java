@@ -58,7 +58,8 @@ public class DatabaseService extends LitePalSupport{
         PartCourse courses44=new PartCourse(5,R.drawable.w4_5,"5、在【安全验证】页面点击【开始】，然后拖动拼图完成验证",3,1);
         PartCourse courses45=new PartCourse(6,R.drawable.w4_6,"6、使用注册账号的手机号发送验证码到指定的号码",3,1);
         PartCourse courses46=new PartCourse(7,R.drawable.w4_7,"7、然后回到注册页面点击【我已发送，下一步】",3,1);
-        PartCourse courses47=new PartCourse(8,R.drawable.w4_8,"8、注册完成之后可以点击【好】同步手机通讯录进入主页                                                                                             ",3,1);
+        PartCourse courses47=new PartCourse(8,R.drawable.w4_8,"8、注册完成之后可以点击【好】同步手机通讯录进入主页" +
+                "",3,1);
         partCourseList.add(courses4);
         partCourseList.add(courses41);
         partCourseList.add(courses42);
@@ -71,14 +72,12 @@ public class DatabaseService extends LitePalSupport{
         SQLiteDatabase db= LitePal.getDatabase();
         LitePal.saveAll(partCourseList);
     }
-
     public List<PartCourse> getpartcouse(int pageid){
         SQLiteDatabase db= LitePal.getDatabase();
         return LitePal.findAll(PartCourse.class).stream()
                 .filter(pi->pi.getPageid()==pageid)
                 .collect(Collectors.toList());
     }
-
     public void deletpartcourse(){
         SQLiteDatabase db= LitePal.getDatabase();//在oncreate里才有用
         LitePal.deleteAll(PartCourse.class);
@@ -88,7 +87,7 @@ public class DatabaseService extends LitePalSupport{
      *
      */
 
-    public void  additem(){
+        public void  additem(){
             SQLiteDatabase db= LitePal.getDatabase();
             List<Item> items=new ArrayList<>();
             for (int i = 0;i < images.length; i ++){
@@ -113,6 +112,8 @@ public class DatabaseService extends LitePalSupport{
             SQLiteDatabase db= LitePal.getDatabase();
             return LitePal.findAll(Item.class);
         }
+
+
         public  void addparttitle( ){
             SQLiteDatabase db= LitePal.getDatabase();//在oncreate里才有用
             for (String i:parttitle) {

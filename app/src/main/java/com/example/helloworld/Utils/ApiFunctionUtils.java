@@ -10,7 +10,7 @@ import android.telephony.SmsManager;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.helloworld.Utils.entity.Relative;
+import com.example.helloworld.setrelative.entity.Relative;
 
 import java.util.ArrayList;
 import java.util.List;
