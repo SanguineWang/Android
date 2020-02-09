@@ -2,7 +2,6 @@ package com.example.helloworld.setrelative;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ListView;
@@ -10,6 +9,7 @@ import android.widget.TextView;
 
 import com.example.helloworld.R;
 import com.example.helloworld.Utils.ApiFunctionUtils;
+import com.example.helloworld.setrelative.Adapter.ViewContectsListAdapter;
 
 public class ViewContects extends AppCompatActivity {
 

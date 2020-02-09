@@ -4,14 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.helloworld.R;
 import com.example.helloworld.Utils.ApiFunctionUtils;
-import com.example.helloworld.test.MainActivity_first;
+import com.example.helloworld.setrelative.Adapter.SetRelativeListAdapter;
 
 public class SetRelative extends AppCompatActivity {
 

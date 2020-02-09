@@ -3,18 +3,15 @@ package com.example.helloworld.learn;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.helloworld.R;
-import com.example.helloworld.circle.CircleActivity;
-import com.example.helloworld.circle.ShareActivity;
-import com.example.helloworld.test.MainActivity_first;
+import com.example.helloworld.learn.Adapter.MyListAdapter;
 
-public class MainActivity extends AppCompatActivity  {
+public class CourseListActivity extends AppCompatActivity  {
     private  int[] images = new int[]{R.drawable.wechat,R.drawable.qq,R.drawable.zhifubao,R.drawable.taobao};
     private String[] data={"微信入门","QQ入门","支付宝入门","淘宝入门"};
     private String[] context={"  超过十亿人使用的手机应用 支持发送语音短信、视频、图片和文字 可以群聊，仅耗少量流量，适合大部分智能手机。",
@@ -38,7 +35,7 @@ public class MainActivity extends AppCompatActivity  {
         bt_share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(com.example.helloworld.learn.MainActivity.this, MainActivity_first.class);
+//                Intent intent = new Intent(com.example.helloworld.learn.CourseListActivity.this, MainActivity_first.class);
 ////                startActivity(intent);
                 finish();
             }
@@ -47,7 +44,7 @@ public class MainActivity extends AppCompatActivity  {
 //       button.setOnClickListener(new View.OnClickListener() {
 //           @Override
 //           public void onClick(View v) {
-//               Intent intent = new Intent(com.example.helloworld.learn.MainActivity.this, CircleActivity.class);
+//               Intent intent = new Intent(com.example.helloworld.learn.CourseListActivity.this, CircleActivity.class);
 //               startActivity(intent);
 //           }
 //       });

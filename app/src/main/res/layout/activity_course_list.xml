@@ -101,7 +101,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/thrid"
-                        android:text="定位"
+                        android:text="共享定位"
                         android:gravity="bottom|center"
                         android:textSize="25dp"/>
                 </RelativeLayout>
@@ -158,7 +158,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/fifth"
-                        android:text="设置亲属手机"
+                        android:text="亲属关联"
                         android:gravity="bottom|center"
                         android:textSize="25dp"/>
 
@@ -175,7 +175,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:background="@drawable/sixth"
-                        android:text="待开发六"
+                        android:text="我的"
                         android:gravity="bottom|center"
                         android:textSize="25dp"/>
 

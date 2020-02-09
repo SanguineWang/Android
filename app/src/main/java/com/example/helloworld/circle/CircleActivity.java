@@ -20,8 +20,6 @@ import com.example.helloworld.R;
 import com.example.helloworld.circle.entity.Fruit;
 import com.example.helloworld.circle.entity.User;
 import com.example.helloworld.circle.utility.database.db_fruit;
-import com.example.helloworld.learn.MainActivity;
-import com.example.helloworld.test.MainActivity_first;
 
 import org.litepal.LitePal;
 

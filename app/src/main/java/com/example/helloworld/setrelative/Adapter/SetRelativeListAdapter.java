@@ -1,4 +1,4 @@
-package com.example.helloworld.setrelative;
+package com.example.helloworld.setrelative.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -7,6 +7,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.helloworld.R;
+import com.example.helloworld.setrelative.SetRelative;
 import com.example.helloworld.setrelative.entity.Relative;
 
 import java.util.List;

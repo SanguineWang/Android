@@ -9,9 +9,9 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.helloworld.R;
-import com.example.helloworld.test.MainActivity_first;
+import com.example.helloworld.learn.Adapter.MyListAdapter2;
 
-public class Main2Activity extends AppCompatActivity {
+public class ChapterListActivity extends AppCompatActivity {
 //    private String[] parttitle = {
 //            "1、微信是什么？" ,
 //            "2、使用微信的费用" ,
@@ -29,7 +29,7 @@ public class Main2Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_chapter_list2);
         DatabaseService db = new DatabaseService();
 //        db.addpartcou2();
          db.deletparttitle();
@@ -44,7 +44,7 @@ public class Main2Activity extends AppCompatActivity {
         bt_share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(com.example.helloworld.learn.Main2Activity.this, MainActivity.class);
+//                Intent intent = new Intent(com.example.helloworld.learn.ChapterListActivity.this, CourseListActivity.class);
 //                startActivity(intent);
                 finish();
             }
@@ -58,7 +58,7 @@ public class Main2Activity extends AppCompatActivity {
 //id 被点击元素的行id。
         lissie2.setOnItemClickListener(
                 (parent, view, position, id) -> {
-                    Intent item2 = new Intent(Main2Activity.this,Main3Activity.class);
+                    Intent item2 = new Intent(ChapterListActivity.this, ContentActivity.class);
 //                       "com.activity4"
                     item2.putExtra("position",position);
 //                        b.putInt("position", (Integer)position);

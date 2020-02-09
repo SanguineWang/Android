@@ -1,4 +1,4 @@
-package com.example.helloworld.learn;
+package com.example.helloworld.learn.Adapter;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,14 +8,16 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.helloworld.R;
+import com.example.helloworld.learn.CourseListActivity;
+import com.example.helloworld.learn.Item;
 
 import java.util.List;
 
 public class MyListAdapter extends BaseAdapter {
     private List<Item> mList;//数据源
     private LayoutInflater mInflater;//布局装载器对象
-    public MyListAdapter(MainActivity mainActivity, List<Item> items) {
-       mInflater=LayoutInflater.from(mainActivity);
+    public MyListAdapter(CourseListActivity courseListActivity, List<Item> items) {
+       mInflater=LayoutInflater.from(courseListActivity);
        mList=items;
     }
 

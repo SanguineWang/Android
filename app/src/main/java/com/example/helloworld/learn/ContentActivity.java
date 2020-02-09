@@ -2,7 +2,6 @@ package com.example.helloworld.learn;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.ActionBar;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -11,17 +10,16 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.example.helloworld.R;
-import com.example.helloworld.test.MainActivity_first;
 
 import java.util.List;
 
-public class Main3Activity extends AppCompatActivity {
+public class ContentActivity extends AppCompatActivity {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main3);
+        setContentView(R.layout.activity_content);
         Intent i = getIntent();
 //        Bundle b = getIntent().getExtras();
         int position= i.getIntExtra("position",-1);
@@ -35,7 +33,7 @@ public class Main3Activity extends AppCompatActivity {
         bt_share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(com.example.helloworld.learn.Main3Activity.this, Main2Activity.class);
+//                Intent intent = new Intent(com.example.helloworld.learn.ContentActivity.this, ChapterListActivity.class);
 //                startActivity(intent);
                 finish();
             }
