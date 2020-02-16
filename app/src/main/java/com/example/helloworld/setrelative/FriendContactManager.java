@@ -26,7 +26,7 @@ import cn.jpush.im.android.api.model.UserInfo;
 import cn.jpush.im.api.BasicCallback;
 
 /**
- * Created by ${chenyn} on 16/7/20.
+ * update by wang on 2020/2/10.
  *
  * @desc :好友相关四大功能:添加 删除 获取列表 更新备注
  */
@@ -59,7 +59,6 @@ public class FriendContactManager extends Activity {
 
                     if (i == 0) {
                         userInfoList=list;
-
 
                         FriendListAdapter myListAdapter = new FriendListAdapter(FriendContactManager.this, userInfoList);
                         lv_friendList.setAdapter(myListAdapter);

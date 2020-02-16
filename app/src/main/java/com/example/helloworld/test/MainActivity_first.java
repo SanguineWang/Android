@@ -12,13 +12,18 @@ import com.example.helloworld.circle.CircleActivity;
 import com.example.helloworld.learn.CourseListActivity;
 import com.example.helloworld.location.MapActivity;
 import com.example.helloworld.setrelative.FriendContactManager;
+import com.example.helloworld.setrelative.ShowFriendReasonActivity;
 import com.example.helloworld.user.MineActivity;
+
+import cn.jpush.im.android.api.JMessageClient;
+import cn.jpush.im.android.api.event.ContactNotifyEvent;
 
 public class MainActivity_first extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        JMessageClient.registerEventReceiver(this);
         initView();
     }
 
@@ -40,6 +45,12 @@ public class MainActivity_first extends AppCompatActivity implements View.OnClic
         button5.setOnClickListener(this);
         button6.setOnClickListener(this);
 
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        JMessageClient.unRegisterEventReceiver(this);
     }
 
     @Override
@@ -68,4 +79,44 @@ public class MainActivity_first extends AppCompatActivity implements View.OnClic
                 break;
         }
     }
+
+    /**
+     * 好友相关事件监听
+     * @param event
+     */
+    public void onEvent(ContactNotifyEvent event) {
+        String reason = event.getReason();
+        String fromUsername = event.getFromUsername();
+        String appkey = event.getfromUserAppKey();
+
+        Intent intent = new Intent(getApplicationContext(), ShowFriendReasonActivity.class);
+        intent.putExtra(ShowFriendReasonActivity.EXTRA_TYPE, event.getType().toString());
+        switch (event.getType()) {
+            case invite_received://收到好友邀请
+                intent.putExtra("invite_received", "fromUsername = " + fromUsername + "\nfromUserAppKey" + appkey + "\nreason = " + reason);
+                intent.putExtra("username", fromUsername);
+                intent.putExtra("appkey", appkey);
+                startActivity(intent);
+                break;
+            case invite_accepted://对方接收了你的好友邀请
+                intent.putExtra("invite_accepted", "对方接受了你的好友邀请");
+                startActivity(intent);
+                break;
+            case invite_declined://对方拒绝了你的好友邀请
+                intent.putExtra("invite_declined", "对方拒绝了你的好友邀请\n拒绝原因:" + event.getReason());
+                startActivity(intent);
+                break;
+            case contact_deleted://对方将你从好友中删除
+                intent.putExtra("contact_deleted", "对方将你从好友中删除");
+                startActivity(intent);
+                break;
+            case contact_updated_by_dev_api://好友关系更新，由api管理员操作引起
+                intent.putExtra("contact_updated_by_dev_api", "好友关系被管理员更新");
+                startActivity(intent);
+                break;
+            default:
+                break;
+        }
+    }
+
 }

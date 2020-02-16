@@ -40,10 +40,14 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" /> <!-- 用于申请调用A-GPS模块 -->
     <uses-permission android:name="android.permission.ACCESS_LOCATION_EXTRA_COMMANDS" /> <!-- 用于申请获取蓝牙信息进行室内定位 -->
     <uses-permission android:name="android.permission.BLUETOOTH" />
-    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" /> <!-- 申请通讯录权限 -->
-    <uses-permission android:name="android.permission.READ_CONTACTS" /> <!-- 打电话的权限 -->
-    <uses-permission android:name="android.permission.CALL_PHONE" /> <!-- 发短信的权限 -->
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <!-- 申请通讯录权限 -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <!-- 打电话的权限 -->
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <!-- 发短信的权限 -->
     <uses-permission android:name="android.permission.SEND_SMS" />
+
 
     <application
         android:name="org.litepal.LitePalApplication"
@@ -56,8 +60,6 @@
         tools:ignore="GoogleAppIndexingWarning"
         android:networkSecurityConfig="@xml/network_security_config"
         tools:replace="android:label">
-        <activity android:name=".setrelative.ViewContects" />
-        <activity android:name=".setrelative.SetRelative" />
 
         <meta-data
             android:name="com.amap.api.v2.apikey"
@@ -119,10 +121,11 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-            <!--极光IM-->
-        <!---->
-        <!---->
-        <!---->
+        <!--<activity android:name="com.example.helloworld.setrelative.Old.ViewContects" />-->
+        <!--<activity android:name="com.example.helloworld.setrelative.Old.SetRelative" />-->
+
+        <!--极光IM-->
+
         <activity
             android:name="com.example.helloworld.user.LoginActivity"
             android:launchMode="singleTask">
@@ -140,7 +143,13 @@
         <activity android:name="com.example.helloworld.setrelative.AddFriendActivity" />
         <activity android:name="com.example.helloworld.setrelative.FriendContactManager" />
         <activity android:name="com.example.helloworld.setrelative.ShowFriendReasonActivity" />
+        <activity android:name="com.example.helloworld.user.UserNoticeActivity" />
+        <activity android:name="com.example.helloworld.user.UserInfoActivity" />
+        <activity android:name="com.example.helloworld.user.UpdatePassword" />
+        <activity android:name="com.example.helloworld.user.UpdateUserInfoActivity" />
 
+        <!--极光SMS-->
+        <activity android:name="com.example.helloworld.user.sms.MainSmsActivity" />
 
         <service
             android:name="com.example.helloworld.PushService"

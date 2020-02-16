@@ -17,7 +17,7 @@ import cn.jpush.im.android.api.event.ContactNotifyEvent;
 import cn.jpush.im.api.BasicCallback;
 
 /**
- * Created by ${chenyn} on 16/4/17.
+ * update by wang on 2020/2/10.
  *
  * @desc :同意或拒绝好友申请
  */
@@ -82,6 +82,7 @@ public class ShowFriendReasonActivity extends Activity {
                     public void gotResult(int i, String s) {
                         if (i == 0) {
                             Toast.makeText(getApplicationContext(), "添加成功", Toast.LENGTH_SHORT).show();
+                            finish();
                         } else {
                             Toast.makeText(getApplicationContext(), "添加失败", Toast.LENGTH_SHORT).show();
                             Log.i(TAG, "ContactManager.acceptInvitation" + ", responseCode = " + i + " ; LoginDesc = " + s);

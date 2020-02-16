@@ -7,8 +7,8 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.helloworld.R;
-import com.example.helloworld.setrelative.ViewContects;
-import com.example.helloworld.setrelative.entity.Relative;
+import com.example.helloworld.setrelative.Old.ViewContects;
+import com.example.helloworld.setrelative.Old.entity.Relative;
 
 import java.util.List;
 

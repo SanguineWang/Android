@@ -1,4 +1,4 @@
-package com.example.helloworld.setrelative.entity;
+package com.example.helloworld.setrelative.Old.entity;
 
 public class Relative{
     private String name;
