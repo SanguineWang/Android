@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#CCFDFDFD</color>
-    <color name="colorPrimaryDark">#F3F3F3</color>
+    <color name="colorPrimary">#1976D2</color>
+    <color name="colorPrimaryDark">#1976D2</color>
     <color name="colorAccent">#AFECEE</color>
     <color name="register_checkbox">#4CAF50</color>
     <color name="register_btn">#CCFF90</color>

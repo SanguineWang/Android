@@ -9,11 +9,15 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.helloworld.R;
 import com.example.helloworld.circle.CircleActivity;
+import com.example.helloworld.friendCircle.FriendCircleActivity;
 import com.example.helloworld.learn.CourseListActivity;
 import com.example.helloworld.location.MapActivity;
 import com.example.helloworld.setrelative.FriendContactManager;
 import com.example.helloworld.setrelative.ShowFriendReasonActivity;
 import com.example.helloworld.user.MineActivity;
+import com.example.helloworld.user.inituserinfo.CutAvatarActivity;
+import com.example.helloworld.user.inituserinfo.SetAvatarActivity;
+import com.example.helloworld.user.inituserinfo.SetBirthdayActivity;
 
 import cn.jpush.im.android.api.JMessageClient;
 import cn.jpush.im.android.api.event.ContactNotifyEvent;
@@ -58,11 +62,11 @@ public class MainActivity_first extends AppCompatActivity implements View.OnClic
         Intent intent = new Intent();
         switch (v.getId()) {
             case R.id.bt_1:
-                intent.setClass(MainActivity_first.this, CourseListActivity.class);
+                intent.setClass(MainActivity_first.this, SetAvatarActivity.class);
                 startActivity(intent);
                 break;
             case R.id.bt_4:
-                intent.setClass(MainActivity_first.this, CircleActivity.class);
+                intent.setClass(MainActivity_first.this, FriendCircleActivity.class);
                 startActivity(intent);
                 break;
             case R.id.bt_3:
@@ -74,6 +78,7 @@ public class MainActivity_first extends AppCompatActivity implements View.OnClic
                 startActivity(intent);
                 break;
             case R.id.bt_6:
+//                intent.setClass(MainActivity_first.this, MineActivity.class);
                 intent.setClass(MainActivity_first.this, MineActivity.class);
                 startActivity(intent);
                 break;

@@ -68,6 +68,7 @@ public class UpdateUserAvatar extends Activity {
                                 if (i == 0) {
                                     mProgressDialog.dismiss();
                                     Toast.makeText(getApplicationContext(), "修改成功", Toast.LENGTH_SHORT).show();
+
                                 } else {
                                     mProgressDialog.dismiss();
                                     Toast.makeText(getApplicationContext(), "修改失败", Toast.LENGTH_SHORT).show();
@@ -78,6 +79,7 @@ public class UpdateUserAvatar extends Activity {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
+
                 } else {
                     mProgressDialog.dismiss();
                     Toast.makeText(UpdateUserAvatar.this, "请选择图片", Toast.LENGTH_SHORT).show();
@@ -107,7 +109,6 @@ public class UpdateUserAvatar extends Activity {
                 mPicturePath = cursor.getString(columnIndex);
                 cursor.close();
             }
-
             ImageView imageView = (ImageView) findViewById(R.id.iv_show_image);
             imageView.setImageBitmap(BitmapFactory.decodeFile(mPicturePath));
         }

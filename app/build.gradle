@@ -1,4 +1,6 @@
 apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
 
 android {
     signingConfigs {
@@ -59,9 +61,32 @@ dependencies {
     implementation 'de.hdodenhof:circleimageview:3.0.1'
     implementation 'org.litepal.android:java:3.0.0'
     implementation fileTree(include: ['*.aar', '*.jar'], exclude: [], dir: 'libs')
-    implementation 'com.squareup.okhttp3:okhttp:3.8.1'
+//    implementation 'com.squareup.okhttp3:okhttp:3.8.1'
     implementation 'com.squareup.okhttp3:mockwebserver:3.8.1'
     implementation 'com.rabtman.wsmanager:wsmanager:1.0.2'
+
+    /**
+     * 界面设计
+     */
+    implementation 'com.contrarywind:Android-PickerView:4.1.9' //时间选择器
+    implementation 'com.github:MyCropBitmap:1.1.2' //图片选择器
+    implementation 'com.ypx.yimagepicker:androidx:3.0.1'
+
+    //朋友圈所需依赖start
+//    implementation 'com.android.volley:volley:1.1.1'//http连接
+    implementation 'androidx.swiperefreshlayout:swiperefreshlayout:1.0.0'//下拉刷新
+    implementation 'com.github.bumptech.glide:glide:4.10.0'//图片加载
+    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0-rc03'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.1.0'///导航组件
+    implementation 'androidx.navigation:navigation-ui-ktx:2.1.0'
+//    implementation 'com.google.code.gson:gson:2.8.6' //json解析
+    implementation 'io.supercharge:shimmerlayout:2.1.0'//占位符
+    implementation 'com.github.chrisbanes.photoview:library:1.2.4'
+    implementation 'com.ypx.yimagepicker:androidx:3.0.1' //图片上传
+    implementation("com.squareup.okhttp3:okhttp:4.3.1")//网络请求
+    //朋友圈所需依赖end
+
+
     ////im极光
     //    implementation 'cn.jiguang.sdk:jmessage:2.9.0'  // 此处以JMessage 2.9.0 版本为例。
     //    implementation 'cn.jiguang.sdk:jcore:2.0.0'  // 此处以JCore 2.0.0 版本为例。

@@ -67,6 +67,12 @@
 
         <service android:name="com.amap.api.location.APSService" />
 
+        <uses-library android:name="org.apache.http.legacy" android:required="false" />
+
+        <activity android:name=".friendCircle.FriendCircleActivity" />
+        <activity android:name=".friendCircle.upload.UploadActivity_java" />
+        <activity android:name=".friendCircle.upload.SecondActivity" />
+
         <activity android:name=".location.MapActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -147,9 +153,16 @@
         <activity android:name="com.example.helloworld.user.UserInfoActivity" />
         <activity android:name="com.example.helloworld.user.UpdatePassword" />
         <activity android:name="com.example.helloworld.user.UpdateUserInfoActivity" />
-
         <!--极光SMS-->
+        <!--废弃-->
         <activity android:name="com.example.helloworld.user.sms.MainSmsActivity" />
+        <!--初始化用户信息页-->
+        <activity android:name=".user.inituserinfo.SetNicknameActivity" />
+        <activity android:name=".user.inituserinfo.SetAvatarActivity" />
+        <activity android:name=".user.inituserinfo.SetGenderActivity" />
+        <activity android:name=".user.inituserinfo.SetBirthdayActivity" />
+        <activity android:name=".user.inituserinfo.CutAvatarActivity" />
+
 
         <service
             android:name="com.example.helloworld.PushService"

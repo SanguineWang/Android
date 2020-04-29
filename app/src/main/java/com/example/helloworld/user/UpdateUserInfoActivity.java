@@ -122,7 +122,6 @@ public class UpdateUserInfoActivity extends Activity {
         });
     }
 
-
     private void initView() {
         setContentView(R.layout.activity_update_user_info);
 
@@ -134,6 +133,7 @@ public class UpdateUserInfoActivity extends Activity {
 
         mRb_male = (RadioButton) findViewById(R.id.rb_male);
         mRb_female = (RadioButton) findViewById(R.id.rb_female);
+
         mRb_unknown = (RadioButton) findViewById(R.id.rb_unknown);
         mRg_gender = (RadioGroup) findViewById(R.id.rg_gender);
 

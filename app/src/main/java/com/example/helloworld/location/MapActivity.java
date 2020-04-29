@@ -98,6 +98,8 @@ public class MapActivity extends AppCompatActivity implements LocationSource, AM
         aMap.moveCamera(CameraUpdateFactory.zoomTo(scale));
         // 设置定位监听
         aMap.setLocationSource(this);
+        //显示地图默认右上方圆形定位图标
+        aMap.getUiSettings().setMyLocationButtonEnabled(false);
         //初始化定位蓝点样式类
         myLocationStyle = new MyLocationStyle();
         //设置连续定位模式下的定位间隔，只在连续定位模式下生效，单次定位模式下不会生效。单位为毫秒。
