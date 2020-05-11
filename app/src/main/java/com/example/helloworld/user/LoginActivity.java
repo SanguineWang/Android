@@ -9,7 +9,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -18,18 +17,9 @@ import androidx.annotation.Nullable;
 import com.example.helloworld.R;
 import com.example.helloworld.Utils.PermissionsUtils;
 import com.example.helloworld.test.MainActivity_first;
-import com.example.helloworld.user.inituserinfo.SetBirthdayActivity;
-import com.example.helloworld.user.sms.MainSmsActivity;
-import com.google.gson.Gson;
-
-import java.util.List;
-
 import cn.jpush.im.android.api.JMessageClient;
-import cn.jpush.im.android.api.callback.RequestCallback;
-import cn.jpush.im.android.api.model.DeviceInfo;
 import cn.jpush.im.android.api.model.UserInfo;
 import cn.jpush.im.api.BasicCallback;
-import cn.jpush.sms.SMSSDK;
 
 /**
  * update by wang on 2020/2/10.
@@ -42,17 +32,15 @@ public class LoginActivity extends Activity {
     public EditText mEd_userName;
     public EditText mEd_password;
     private Button mBt_login;
-//    private Button mBt_login_with_infos;
     private Button mBt_gotoRegister;
     private ProgressDialog mProgressDialog = null;
-//    private RadioGroup mRgType;
-//    private boolean isTestVisibility = false;
+
     private  static  final    String[] permissions = new String[]{
+            Manifest.permission.CALL_PHONE,
+            Manifest.permission.SEND_SMS,
             Manifest.permission.ACCESS_COARSE_LOCATION,
             Manifest.permission.WRITE_EXTERNAL_STORAGE,
-            Manifest.permission.READ_CONTACTS,
-            Manifest.permission.CALL_PHONE,
-            Manifest.permission.SEND_SMS};
+            };
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -110,20 +98,18 @@ public class LoginActivity extends Activity {
      * #################    应用入口,登陆或者是注册    #################
      */
     private void initData() {
-        /**=================     获取个人信息不是null，说明已经登陆，无需再次登陆，则直接进入type界面    =================*/
+        /*=================     获取个人信息不是null，说明已经登陆，无需再次登陆，则直接进入type界面    =================*/
         UserInfo myInfo = JMessageClient.getMyInfo();
         if (myInfo != null) {
             Intent intent = new Intent(LoginActivity.this, MainActivity_first.class);
             startActivity(intent);
             finish();
         }
-        /**=================     调用注册接口    =================*/
+        /*=================     调用注册接口    =================*/
         mBt_gotoRegister.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent();
-//                intent.setClass(getApplicationContext(), MainSmsActivity.class);
-
                 intent.setClass(getApplicationContext(), RegisterActivity.class);
                 startActivityForResult(intent, REQ_CODE_FOR_REGISTER);
             }
@@ -135,7 +121,7 @@ public class LoginActivity extends Activity {
                 mProgressDialog.setCanceledOnTouchOutside(true);
                 String userName = mEd_userName.getText().toString();
                 String password = mEd_password.getText().toString();
-                /**=================     调用SDk登陆接口    =================*/
+                /*=================     调用SDk登陆接口    =================*/
                 JMessageClient.login(userName, password, new BasicCallback() {
                     @Override
                     public void gotResult(int responseCode, String LoginDesc) {
@@ -145,10 +131,6 @@ public class LoginActivity extends Activity {
                             Log.i("CourseListActivity", "JMessageClient.login" + ", responseCode = " + responseCode + " ; LoginDesc = " + LoginDesc);
                             Intent intent = new Intent();
                             intent.setClass(getApplicationContext(), MainActivity_first.class);
-
-
-
-
                             startActivity(intent);
                             finish();
                         } else {
@@ -161,35 +143,6 @@ public class LoginActivity extends Activity {
             }
         });
 
-//        mBt_login_with_infos.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                mProgressDialog = ProgressDialog.show(LoginActivity.this, "提示：", "正在加载中。。。");
-//                mProgressDialog.setCanceledOnTouchOutside(true);
-//                String userName = mEd_userName.getText().toString();
-//                String password = mEd_password.getText().toString();
-//                /**=================     调用SDk登陆接口    =================*/
-//                JMessageClient.login(userName, password, new RequestCallback<List<DeviceInfo>>() {
-//                    @Override
-//                    public void gotResult(int responseCode, String responseMessage, List<DeviceInfo> result) {
-//                        if (responseCode == 0) {
-//                            mProgressDialog.dismiss();
-//                            Toast.makeText(getApplicationContext(), "登陆成功", Toast.LENGTH_SHORT).show();
-//                            Log.i("CourseListActivity", "JMessageClient.login" + ", responseCode = " + responseCode + " ; LoginDesc = " + responseMessage);
-//                            Intent intent = new Intent(getApplicationContext(), MainActivity_first.class);
-//                            Gson gson = new Gson();
-//                            intent.putExtra("deviceInfos", gson.toJson(result));
-//                            startActivity(intent);
-//                            finish();
-//                        } else {
-//                            mProgressDialog.dismiss();
-//                            Toast.makeText(getApplicationContext(), "登陆失败", Toast.LENGTH_SHORT).show();
-//                            Log.i("CourseListActivity", "JMessageClient.login" + ", responseCode = " + responseCode + " ; LoginDesc = " + responseMessage);
-//                        }
-//                    }
-//                });
-//            }
-//        });
 
 
     }
@@ -199,21 +152,7 @@ public class LoginActivity extends Activity {
         mEd_userName = (EditText) findViewById(R.id.ed_login_username);
         mEd_password = (EditText) findViewById(R.id.ed_login_password);
         mBt_login = (Button) findViewById(R.id.bt_login);
-//        mBt_login_with_infos = (Button) findViewById(R.id.bt_login_with_infos);
         mBt_gotoRegister = (Button) findViewById(R.id.bt_goto_regester);
-//        mRgType = (RadioGroup) findViewById(R.id.rg_environment);;
-//        if (!isTestVisibility) {
-//            mRgType.setVisibility(View.GONE);
-//        } else {
-//            //供jmessage sdk测试使用，开发者无需关心。
-////            Boolean isTestEvn = invokeIsTestEvn();
-////            Boolean isQAEvn = invokeIsQAEvn();
-//            mRgType.check(R.id.rb_public);
-//            if (isTestEvn) {
-//                mRgType.check(R.id.rb_test);
-//            } else if (isQAEvn) {
-//                mRgType.check(R.id.rb_qa);
-//            }
-//        }
+
     }
 }

@@ -27,7 +27,6 @@ public class UpdatePassword extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         initView();
         initData();
     }

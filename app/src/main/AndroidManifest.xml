@@ -13,6 +13,7 @@
     <!--<uses-permission android:name="android.permission.READ_PHONE_STATE" />-->
     <!--<uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />-->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+<!--    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>-->
     <uses-permission android:name="android.permission.VIBRATE" />
     <!--<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />-->
     <!--<uses-permission android:name="android.permission.WRITE_SETTINGS" />-->
@@ -153,13 +154,11 @@
         <activity android:name="com.example.helloworld.user.UserInfoActivity" />
         <activity android:name="com.example.helloworld.user.UpdatePassword" />
         <activity android:name="com.example.helloworld.user.UpdateUserInfoActivity" />
-        <!--极光SMS-->
-        <!--废弃-->
-        <activity android:name="com.example.helloworld.user.sms.MainSmsActivity" />
+        <!--SMS-->
+        <activity android:name="com.example.helloworld.test.SmsActivity" />
         <!--初始化用户信息页-->
-        <activity android:name=".user.inituserinfo.SetNicknameActivity" />
         <activity android:name=".user.inituserinfo.SetAvatarActivity" />
-        <activity android:name=".user.inituserinfo.SetGenderActivity" />
+
         <activity android:name=".user.inituserinfo.SetBirthdayActivity" />
         <activity android:name=".user.inituserinfo.CutAvatarActivity" />
 

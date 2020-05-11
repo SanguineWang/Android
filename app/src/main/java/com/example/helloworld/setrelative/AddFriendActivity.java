@@ -40,23 +40,23 @@ public class AddFriendActivity extends Activity {
 
 
     private void initData() {
-        //发送添加好友请求
-        mButton.setOnClickListener(v -> {
-            String name = mEt_userName.getText().toString();
-            String appkey = null;
-            String reason = mEt_reason.getText().toString();
-            ContactManager.sendInvitationRequest(name, appkey, reason, new BasicCallback() {
-                @Override
-                public void gotResult(int i, String s) {
-                    if (i == 0) {
-                        Toast.makeText(getApplicationContext(), "申请成功", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Log.i("AddFriendActivity", "ContactManager.sendInvitationRequest" + ", responseCode = " + i + " ; Desc = " + s);
-                        Toast.makeText(getApplicationContext(), "申请失败", Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
-        });
+//        //发送添加好友请求
+//        mButton.setOnClickListener(v -> {
+//            String name = mEt_userName.getText().toString();
+//            String appkey = null;
+//            String reason = mEt_reason.getText().toString();
+//            ContactManager.sendInvitationRequest(name, appkey, reason, new BasicCallback() {
+//                @Override
+//                public void gotResult(int i, String s) {
+//                    if (i == 0) {
+//                        Toast.makeText(getApplicationContext(), "申请成功", Toast.LENGTH_SHORT).show();
+//                    } else {
+//                        Log.i("AddFriendActivity", "ContactManager.sendInvitationRequest" + ", responseCode = " + i + " ; Desc = " + s);
+//                        Toast.makeText(getApplicationContext(), "申请失败", Toast.LENGTH_SHORT).show();
+//                    }
+//                }
+//            });
+//        });
         //查找用户信息
         mbt_search.setOnClickListener(v -> {
             Intent intent = new Intent();
@@ -86,9 +86,6 @@ public class AddFriendActivity extends Activity {
     private void initView() {
         setContentView(R.layout.activity_add_friend);
         mEt_userName = (EditText) findViewById(R.id.et_user_name);
-        mEt_reason = (EditText) findViewById(R.id.et_reason);
-
-        mButton = (Button) findViewById(R.id.bt_add_friend);
         mbt_search = findViewById(R.id.bt_search);
     }
 }

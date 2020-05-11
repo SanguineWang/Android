@@ -13,6 +13,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.helloworld.R;
+import com.example.helloworld.user.inituserinfo.SetAvatarActivity;
 
 import cn.jpush.im.android.api.JMessageClient;
 import cn.jpush.im.android.api.model.UserInfo;
@@ -42,6 +43,20 @@ public class MineActivity extends Activity implements View.OnClickListener {
         initData();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initView();
+        initData();
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        initView();
+        initData();
+    }
+
     private void initView() {
 
         setContentView(R.layout.activity_about_mine);
@@ -57,8 +72,7 @@ public class MineActivity extends Activity implements View.OnClickListener {
 
     private void initData() {
         UserInfo userInfo = JMessageClient.getMyInfo();
-//        tv_username.setText("");
-//        tv_user_id.setText("");
+
         if (userInfo != null) {
             Log.e(TAG, "initData: userinfo" +userInfo.toString());
             if (!userInfo.getNickname().equals("")){
@@ -67,12 +81,12 @@ public class MineActivity extends Activity implements View.OnClickListener {
                 tv_username.setText(nickname);
             }
 
-            tv_user_id.setText(userInfo.getUserName());  //账号
+            tv_user_id.setText("账号"+userInfo.getUserName());  //账号
 
             if (userInfo.getAvatarFile() != null) {
                 iv_Avatar.setImageBitmap(BitmapFactory.decodeFile(userInfo.getAvatarFile().toString()));//头像
             }else{
-                iv_Avatar.setImageResource(R.drawable.back2);
+                iv_Avatar.setImageResource(R.drawable.init_avatar);
             }
 
             //log调试打印
@@ -125,7 +139,7 @@ public class MineActivity extends Activity implements View.OnClickListener {
                 startActivity(intent);
                 break;
             case R.id.bt_update_user_avatar://更新头像
-                intent.setClass(MineActivity.this, UpdateUserAvatar.class);
+                intent.setClass(MineActivity.this, SetAvatarActivity.class);
                 startActivity(intent);
                 break;
             case R.id.bt_update_user_password://更新密码

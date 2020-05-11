@@ -294,7 +294,6 @@ public class MapActivity extends AppCompatActivity implements LocationSource, AM
 //            Log.e(TAG, "onDestroy: " + friendNameList.toString());
 //            JMessageClient.deleteSingleConversation(username);
 //        }
-
         JMessageClient.unRegisterEventReceiver(this);
     }
 
@@ -452,7 +451,6 @@ public class MapActivity extends AppCompatActivity implements LocationSource, AM
     }
 
     private void addMark(double latitude, double longitude, String username, String address) {
-
         /**
          * 持续定位
          * 下次定位之前删除之前的定位点

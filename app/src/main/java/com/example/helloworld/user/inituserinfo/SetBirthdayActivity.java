@@ -103,7 +103,8 @@ public class SetBirthdayActivity extends AppCompatActivity {
                 }
             });
 
-            //跳转下一个页面
+            //完成返回
+            finish();
 
         });
 
@@ -125,4 +126,5 @@ public class SetBirthdayActivity extends AppCompatActivity {
         tvTime = findViewById(R.id.tv_birthday_time);
         bt_next = findViewById(R.id.bt_birthday_next);
     }
+
 }

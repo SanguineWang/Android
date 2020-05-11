@@ -32,7 +32,7 @@ import cn.jpush.im.api.BasicCallback;
  */
 public class FriendContactManager extends Activity {
 
-    private Button mBu_showFriendList;
+//    private Button mBu_showFriendList;
     private TextView mTv_showFriendList;
     private Button mBt_addFriend;
     private Button mBt_delFriend;
@@ -48,31 +48,36 @@ public class FriendContactManager extends Activity {
         initData();
     }
 
-    private void initData() {
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        initView();
+        initData();
+    }
 
-        //获取好友列表
-        mBu_showFriendList.setOnClickListener(v -> {
-            mTv_showFriendList.setText("");
-            ContactManager.getFriendList(new GetUserInfoListCallback() {
-                @Override
-                public void gotResult(int i, String s, List<UserInfo> list) {
-
-                    if (i == 0) {
-                        userInfoList=list;
-
-                        FriendListAdapter myListAdapter = new FriendListAdapter(FriendContactManager.this, userInfoList);
-                        lv_friendList.setAdapter(myListAdapter);
-                        if (list.size() == 0) {
-                            mTv_showFriendList.append("没有好友");
-                        }
-                        Toast.makeText(getApplicationContext(), "获取成功", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(getApplicationContext(), "获取失败", Toast.LENGTH_SHORT).show();
-                        Log.i("FriendContactManager", "ContactManager.getFriendList" + ", responseCode = " + i + " ; LoginDesc = " + s);
+    @Override
+    protected void onResume() {
+        super.onResume();
+        ContactManager.getFriendList(new GetUserInfoListCallback() {
+            @Override
+            public void gotResult(int i, String s, List<UserInfo> list) {
+                if (i == 0) {
+                    userInfoList=list;
+                    FriendListAdapter myListAdapter = new FriendListAdapter(FriendContactManager.this, userInfoList);
+                    lv_friendList.setAdapter(myListAdapter);
+                    if (list.size() == 0) {
+                        mTv_showFriendList.append("没有亲属");
                     }
+                    Log.i("FriendContactManager", "获取成功ContactManager.getFriendList" + ", responseCode = " + i + " ; LoginDesc = " + s);
+                } else {
+                    Toast.makeText(getApplicationContext(), "获取失败", Toast.LENGTH_SHORT).show();
+                    Log.i("FriendContactManager", "获取失败ContactManager.getFriendList" + ", responseCode = " + i + " ; LoginDesc = " + s);
                 }
-            });
+            }
         });
+    }
+
+    private void initData() {
 
 
         //添加好友
@@ -82,100 +87,99 @@ public class FriendContactManager extends Activity {
         });
 
         //示例只删除列表中第一个
-        mBt_delFriend.setOnClickListener(v -> ContactManager.getFriendList(new GetUserInfoListCallback() {
-            @Override
-            public void gotResult(int i, String s, List<UserInfo> list) {
-                if (i == 0) {
-                    if (list.size() == 0) {
-                        Toast.makeText(getApplicationContext(), "列表为空", Toast.LENGTH_SHORT).show();
-                        return;
-                    }
-                    UserInfo info = list.get(0);
-                    info.removeFromFriendList(new BasicCallback() {
-                        @Override
-                        public void gotResult(int i, String s) {
-                            if (i == 0) {
-                                Toast.makeText(getApplicationContext(), "删除成功", Toast.LENGTH_SHORT).show();
-                            } else {
-                                Toast.makeText(getApplicationContext(), "删除失败", Toast.LENGTH_SHORT).show();
-                                Log.i("FriendContactManager", "UserInfo.removeFromFriendList" + ", responseCode = " + i + " ; LoginDesc = " + s);
-                            }
+//        mBt_delFriend.setOnClickListener(v -> ContactManager.getFriendList(new GetUserInfoListCallback() {
+//            @Override
+//            public void gotResult(int i, String s, List<UserInfo> list) {
+//                if (i == 0) {
+//                    if (list.size() == 0) {
+//                        Toast.makeText(getApplicationContext(), "列表为空", Toast.LENGTH_SHORT).show();
+//                        return;
+//                    }
+//                    UserInfo info = list.get(0);
+//                    info.removeFromFriendList(new BasicCallback() {
+//                        @Override
+//                        public void gotResult(int i, String s) {
+//                            if (i == 0) {
+//                                Toast.makeText(getApplicationContext(), "删除成功", Toast.LENGTH_SHORT).show();
+//                            } else {
+//                                Toast.makeText(getApplicationContext(), "删除失败", Toast.LENGTH_SHORT).show();
+//                                Log.i("FriendContactManager", "UserInfo.removeFromFriendList" + ", responseCode = " + i + " ; LoginDesc = " + s);
+//                            }
+//
+//                        }
+//                    });
+//                } else {
+//                    Toast.makeText(getApplicationContext(), "没有获取到好友列表", Toast.LENGTH_SHORT).show();
+//                    Log.i("FriendContactManager", "ContactManager.getFriendList" + ", responseCode = " + i + " ; LoginDesc = " + s);
+//                }
+//
+//            }
+//        }));
 
-                        }
-                    });
-                } else {
-                    Toast.makeText(getApplicationContext(), "没有获取到好友列表", Toast.LENGTH_SHORT).show();
-                    Log.i("FriendContactManager", "ContactManager.getFriendList" + ", responseCode = " + i + " ; LoginDesc = " + s);
-                }
-
-            }
-        }));
-
-        //更新好友备注;本示例更新的是列表中的第一个人
-        mBt_updateNote.setOnClickListener(v -> {
-            final String noteName = mEt_noteName.getText().toString();
-            final String noteText = mEt_noteText.getText().toString();
-            ContactManager.getFriendList(
-                    new GetUserInfoListCallback() {
-                        @Override
-                        public void gotResult(int i, String s, List<UserInfo> list) {
-                            if (list.size() == 0) {
-                                Toast.makeText(getApplicationContext(), "没有好友不能更新", Toast.LENGTH_SHORT).show();
-                                return;
-                            }
-                            final UserInfo info = list.get(0);
-                            if (TextUtils.isEmpty(noteName) && TextUtils.isEmpty(noteText)) {
-                                Toast.makeText(FriendContactManager.this, "请输入相关参数", Toast.LENGTH_SHORT).show();
-                                return;
-                            }
-                            if (!TextUtils.isEmpty(noteName)) {
-                                info.updateNoteName(noteName, new BasicCallback() {
-                                    @Override
-                                    public void gotResult(int i, String s) {
-                                        if (i == 0) {
-                                            Toast.makeText(getApplicationContext(), "更新 note name 成功", Toast.LENGTH_SHORT).show();
-                                            mTv_showFriendList.append("获取更新后的note name : " + info.getNotename());
-                                        } else {
-                                            Toast.makeText(getApplicationContext(), "更新失败", Toast.LENGTH_SHORT).show();
-                                            Log.i("FriendContactManager", "UserInfo.updateNoteName" + ", responseCode = " + i + " ; Desc = " + s);
-                                        }
-                                    }
-                                });
-
-                            }
-                            if (!TextUtils.isEmpty(noteText)) {
-                                info.updateNoteText(noteText, new BasicCallback() {
-                                    @Override
-                                    public void gotResult(int i, String s) {
-                                        if (i == 0) {
-                                            mTv_showFriendList.append("获取更新后的note text : " + info.getNoteText());
-                                            Toast.makeText(getApplicationContext(), "更新 note text 成功", Toast.LENGTH_SHORT).show();
-                                        } else {
-                                            Toast.makeText(getApplicationContext(), "更新失败", Toast.LENGTH_SHORT).show();
-                                            Log.i("FriendContactManager", "UserInfo.updateNoteText" + ", responseCode = " + i + " ; Desc = " + s);
-                                        }
-                                    }
-                                });
-                            }
-
-                        }
-
-                    }
-            );
-        });
+//        //更新好友备注;本示例更新的是列表中的第一个人
+//        mBt_updateNote.setOnClickListener(v -> {
+//            final String noteName = mEt_noteName.getText().toString();
+//            final String noteText = mEt_noteText.getText().toString();
+//            ContactManager.getFriendList(
+//                    new GetUserInfoListCallback() {
+//                        @Override
+//                        public void gotResult(int i, String s, List<UserInfo> list) {
+//                            if (list.size() == 0) {
+//                                Toast.makeText(getApplicationContext(), "没有好友不能更新", Toast.LENGTH_SHORT).show();
+//                                return;
+//                            }
+//                            final UserInfo info = list.get(0);
+//                            if (TextUtils.isEmpty(noteName) && TextUtils.isEmpty(noteText)) {
+//                                Toast.makeText(FriendContactManager.this, "请输入相关参数", Toast.LENGTH_SHORT).show();
+//                                return;
+//                            }
+//                            if (!TextUtils.isEmpty(noteName)) {
+//                                info.updateNoteName(noteName, new BasicCallback() {
+//                                    @Override
+//                                    public void gotResult(int i, String s) {
+//                                        if (i == 0) {
+//                                            Toast.makeText(getApplicationContext(), "更新 note name 成功", Toast.LENGTH_SHORT).show();
+//                                            mTv_showFriendList.append("获取更新后的note name : " + info.getNotename());
+//                                        } else {
+//                                            Toast.makeText(getApplicationContext(), "更新失败", Toast.LENGTH_SHORT).show();
+//                                            Log.i("FriendContactManager", "UserInfo.updateNoteName" + ", responseCode = " + i + " ; Desc = " + s);
+//                                        }
+//                                    }
+//                                });
+//
+//                            }
+//                            if (!TextUtils.isEmpty(noteText)) {
+//                                info.updateNoteText(noteText, new BasicCallback() {
+//                                    @Override
+//                                    public void gotResult(int i, String s) {
+//                                        if (i == 0) {
+//                                            mTv_showFriendList.append("获取更新后的note text : " + info.getNoteText());
+//                                            Toast.makeText(getApplicationContext(), "更新 note text 成功", Toast.LENGTH_SHORT).show();
+//                                        } else {
+//                                            Toast.makeText(getApplicationContext(), "更新失败", Toast.LENGTH_SHORT).show();
+//                                            Log.i("FriendContactManager", "UserInfo.updateNoteText" + ", responseCode = " + i + " ; Desc = " + s);
+//                                        }
+//                                    }
+//                                });
+//                            }
+//
+//                        }
+//
+//                    }
+//            );
+//        });
     }
 
     private void initView() {
         setContentView(R.layout.activity_friend_contact_manager);
 
-        mBu_showFriendList = (Button) findViewById(R.id.bu_show_friend_list);
         mTv_showFriendList = (TextView) findViewById(R.id.tv_show_friend_list);
         mBt_addFriend = (Button) findViewById(R.id.bt_add_friend);
-        mBt_delFriend = (Button) findViewById(R.id.bt_del_friend);
-
-        mEt_noteName = (EditText) findViewById(R.id.et_note_name);
-        mEt_noteText = (EditText) findViewById(R.id.et_note_text);
-        mBt_updateNote = (Button) findViewById(R.id.bt_update_note);
+//        mBt_delFriend = (Button) findViewById(R.id.bt_del_friend);
+//
+//        mEt_noteName = (EditText) findViewById(R.id.et_note_name);
+//        mEt_noteText = (EditText) findViewById(R.id.et_note_text);
+//        mBt_updateNote = (Button) findViewById(R.id.bt_update_note);
         lv_friendList = (ListView) findViewById(R.id.lv_friend_list);
 
     }

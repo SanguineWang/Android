@@ -46,7 +46,6 @@ public class UpdateUserAvatar extends Activity {
 
     private void initData() {
         mBt_localImage.setOnClickListener(new View.OnClickListener() {
-
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
@@ -59,8 +58,9 @@ public class UpdateUserAvatar extends Activity {
             public void onClick(View v) {
                 mProgressDialog = ProgressDialog.show(UpdateUserAvatar.this, "提示：", "正在加载中。。。");
                 mProgressDialog.setCanceledOnTouchOutside(true);
+                File file;
                 if (mPicturePath != null) {
-                    File file = new File(mPicturePath);
+                    file=new File(mPicturePath);
                     try {
                         JMessageClient.updateUserAvatar(file, new BasicCallback() {
                             @Override
@@ -79,11 +79,11 @@ public class UpdateUserAvatar extends Activity {
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-
                 } else {
                     mProgressDialog.dismiss();
-                    Toast.makeText(UpdateUserAvatar.this, "请选择图片", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(UpdateUserAvatar.this, "使用默认头像", Toast.LENGTH_SHORT).show();
                 }
+
             }
         });
     }

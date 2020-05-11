@@ -23,8 +23,9 @@ public class PermissionsUtils {
     public static boolean showSystemSetting = true;
     private PermissionsUtils() {
     }
-    private static PermissionsUtils permissionsUtils;
     private IPermissionsResult mPermissionsResult;
+    private static PermissionsUtils permissionsUtils;
+
 
     public static PermissionsUtils getInstance() {
         if (permissionsUtils == null) {

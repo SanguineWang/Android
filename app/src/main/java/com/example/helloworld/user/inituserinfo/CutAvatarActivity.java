@@ -55,9 +55,6 @@ public class CutAvatarActivity extends AppCompatActivity {
     private void initView() {
         setContentView(R.layout.activity_cut_avatar);
         likeView = findViewById(R.id.lv_cut_avatar);
-
-
-
         cut = findViewById(R.id.bt_checked);
 //        aftercut = findViewById(R.id.iv_cuted);
 

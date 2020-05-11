@@ -56,19 +56,19 @@ public class ApiFunctionUtils {
      *
      * @param activity
      * @param location
-     * @param phoneNums
+     * @param phoneNum
      */
-    public void sendMsg(Activity activity, String location, List<String> phoneNums) {
+    public void sendMsg(Activity activity, String location, String phoneNum) {
         //对象
         //短信内容
-        String content = "您的亲属已经面临走失危险，位置:" + location;
+        String content = "【紧急求助】位置:" + location;
         try {
-            for (int i = 0; i < phoneNums.size(); i++) {
+
                 ArrayList<String> messages = SmsManager.getDefault().divideMessage(content);
                 for (String text : messages) {
-                    SmsManager.getDefault().sendTextMessage(phoneNums.get(i), null, text, null, null);
+                    SmsManager.getDefault().sendTextMessage(phoneNum, null, text, null, null);
                 }
-            }
+
             Toast.makeText(activity, "短信发送成功", Toast.LENGTH_SHORT).show();
         } catch (SecurityException e) {
             e.printStackTrace();

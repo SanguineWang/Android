@@ -8,37 +8,6 @@
     android:paddingTop="16dp"
     android:orientation="vertical"
     >
-    <RadioGroup
-        android:id="@+id/radio"
-        android:layout_marginTop="10dp"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <RadioButton
-            android:id="@+id/radio_chinese"
-            android:text="中文"
-            android:layout_weight="1"
-            android:checked="true"
-            android:layout_gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <RadioButton
-
-            android:id="@+id/radio_english"
-            android:text="英文"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-        <RadioButton
-
-            android:id="@+id/radio_chinese_english"
-            android:text="中英文"
-            android:layout_weight="1"
-            android:layout_gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-    </RadioGroup>
 
     <RelativeLayout
         android:layout_width="match_parent"

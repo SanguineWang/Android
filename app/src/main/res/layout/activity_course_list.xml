@@ -51,43 +51,16 @@
                     android:layout_weight="1"
                     android:paddingBottom="7.5dp">
 
-                    <TextView
-                        android:id="@+id/t1"
+
+                    <Button
+                        android:id="@+id/bt_sms"
                         android:layout_width="match_parent"
-                        android:layout_height="30dp"
-                        android:text="-25° "
-                        android:gravity="right"
+                        android:layout_height="match_parent"
+                        android:gravity="bottom|center"
+                        android:background="@color/qmui_config_color_red"
+                        android:textColor="#FFF"
                         android:textSize="25dp"
-                        android:background="@drawable/second"
-                        android:textColor="#FFF"
-
-                       />
-                    <TextView
-                        android:id="@+id/t2"
-                        android:layout_below="@id/t1"
-                        android:text="多云"
-                        android:textSize="30dp"
-                        android:gravity="center_horizontal|center"
-                        android:background="#2848c7"
-                        android:layout_width="match_parent"
-                        android:layout_height="55dp"
-                        android:drawableLeft="@drawable/tianqi1"
-                        android:textColor="#FFF"
-                        />
-                    <TextView
-                        android:id="@+id/t3"
-                        android:layout_below="@id/t2"
-                        android:layout_width="match_parent"
-                        android:layout_height="35dp"
-                        android:text="香坊区"
-                        android:gravity="right"
-                        android:textSize="25dp"
-                        android:drawableRight="@mipmap/dingwei1"
-                        android:background="#2848c7"
-                        android:textColor="#FFF"
-                        />
-
-
+                        android:text="紧急求助SOS" />
                 </RelativeLayout>
 
                 <RelativeLayout
