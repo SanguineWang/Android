@@ -7,8 +7,8 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.example.helloworld.R;
-import com.example.helloworld.learn.ChapterListActivity;
-import com.example.helloworld.learn.Cou2;
+import com.example.helloworld.learn.old.ChapterListActivity;
+import com.example.helloworld.learn.old.Cou2;
 
 import java.util.List;
 

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".learn.Main4Activity">
+    tools:context=".learn.old.Main4Activity">
 
     <ScrollView
         android:layout_width="match_parent"

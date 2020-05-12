@@ -1,27 +1,20 @@
 package com.example.helloworld.test;
 
-import android.app.PendingIntent;
 import android.content.Intent;
 import android.os.Bundle;
-import android.telephony.SmsManager;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.helloworld.R;
-import com.example.helloworld.circle.CircleActivity;
 import com.example.helloworld.friendCircle.FriendCircleActivity;
-import com.example.helloworld.learn.CourseListActivity;
+import com.example.helloworld.learn.VideoActivity;
 import com.example.helloworld.location.MapActivity;
 import com.example.helloworld.setrelative.FriendContactManager;
 import com.example.helloworld.setrelative.ShowFriendReasonActivity;
 import com.example.helloworld.user.MineActivity;
-import com.example.helloworld.user.inituserinfo.CutAvatarActivity;
 import com.example.helloworld.user.inituserinfo.SetAvatarActivity;
-import com.example.helloworld.user.inituserinfo.SetBirthdayActivity;
-
-import java.util.List;
 
 import cn.jpush.im.android.api.JMessageClient;
 import cn.jpush.im.android.api.event.ContactNotifyEvent;
@@ -46,7 +39,6 @@ public class MainActivity_first extends AppCompatActivity implements View.OnClic
         Button button3 = (Button) findViewById(R.id.bt_3);
         Button button5 = (Button) findViewById(R.id.bt_5);
         Button button6 = (Button) findViewById(R.id.bt_6);
-
         Button bt_sms = (Button) findViewById(R.id.bt_sms);
 
         bt_sms.setOnClickListener(this);
@@ -73,7 +65,7 @@ public class MainActivity_first extends AppCompatActivity implements View.OnClic
                 startActivity(intent);
                 break;
             case R.id.bt_1:
-                intent.setClass(MainActivity_first.this, SetAvatarActivity.class);
+                intent.setClass(MainActivity_first.this, VideoActivity.class);
                 startActivity(intent);
                 break;
             case R.id.bt_4:

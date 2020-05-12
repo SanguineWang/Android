@@ -1,4 +1,4 @@
-package com.example.helloworld.learn;
+package com.example.helloworld.learn.old;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -33,7 +33,7 @@ public class ContentActivity extends AppCompatActivity {
         bt_share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(com.example.helloworld.learn.ContentActivity.this, ChapterListActivity.class);
+//                Intent intent = new Intent(com.example.helloworld.learn.old.ContentActivity.this, ChapterListActivity.class);
 //                startActivity(intent);
                 finish();
             }

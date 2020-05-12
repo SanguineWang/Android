@@ -8,8 +8,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.helloworld.R;
-import com.example.helloworld.learn.CourseListActivity;
-import com.example.helloworld.learn.Item;
+import com.example.helloworld.learn.old.CourseListActivity;
+import com.example.helloworld.learn.old.Item;
 
 import java.util.List;
 

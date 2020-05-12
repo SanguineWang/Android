@@ -32,10 +32,10 @@
     	</list>
     -->
     <list>
-        <mapping class="com.example.helloworld.learn.Cou2"/>
-        <mapping class="com.example.helloworld.learn.Item" />
-        <mapping class="com.example.helloworld.learn.Cousre" />
-        <mapping class="com.example.helloworld.learn.PartCourse" />
+        <mapping class="com.example.helloworld.learn.old.Cou2"/>
+        <mapping class="com.example.helloworld.learn.old.Item" />
+        <mapping class="com.example.helloworld.learn.old.Cousre" />
+        <mapping class="com.example.helloworld.learn.old.PartCourse" />
         <mapping class="com.example.helloworld.circle.utility.database.db_fruit"/>
     </list>
 

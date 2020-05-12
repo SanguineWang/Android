@@ -1,4 +1,4 @@
-package com.example.helloworld.learn;
+package com.example.helloworld.learn.old;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -35,7 +35,7 @@ public class CourseListActivity extends AppCompatActivity  {
         bt_share.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Intent intent = new Intent(com.example.helloworld.learn.CourseListActivity.this, MainActivity_first.class);
+//                Intent intent = new Intent(com.example.helloworld.learn.old.CourseListActivity.this, MainActivity_first.class);
 ////                startActivity(intent);
                 finish();
             }
@@ -44,7 +44,7 @@ public class CourseListActivity extends AppCompatActivity  {
 //       button.setOnClickListener(new View.OnClickListener() {
 //           @Override
 //           public void onClick(View v) {
-//               Intent intent = new Intent(com.example.helloworld.learn.CourseListActivity.this, CircleActivity.class);
+//               Intent intent = new Intent(com.example.helloworld.learn.old.CourseListActivity.this, CircleActivity.class);
 //               startActivity(intent);
 //           }
 //       });

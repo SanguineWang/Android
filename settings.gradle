@@ -1,1 +1,1 @@
-include ':app',  ':jimdemo'
+include ':app'
